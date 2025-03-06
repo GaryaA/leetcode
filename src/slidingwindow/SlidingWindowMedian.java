@@ -2,24 +2,28 @@ package slidingwindow;
 
 import java.util.Arrays;
 import java.util.Comparator;
-import java.util.PriorityQueue;
-import java.util.Queue;
+import java.util.TreeSet;
 
 public class SlidingWindowMedian {
 
     public static void main(String[] args) {
-        int[] nums = {1, 2, 3, 4, 2, 3, 1, 4, 2};
-        int k = 3;
+        int[] nums = {2147483647, 1, 2, 3, 4, 5, 6, 7, 2147483647};
+        int k = 2;
 
-        System.out.println(Arrays.toString(medianSlidingWindow(nums, k)));
+        System.out.println(Arrays.toString(new SlidingWindowMedian().medianSlidingWindow(nums, k)));
     }
 
-    private static final Queue<Holder> qDesc = new PriorityQueue<>(Comparator.<Holder>comparingInt(a -> a.value).reversed());
-    private static final Queue<Holder> qAsc = new PriorityQueue<>(Comparator.comparingInt(a -> a.value));
-    private static Integer countOutElemsQDesc = 0;
-    private static Integer countOutElemsQAsc = 0;
+    private final TreeSet<Holder> leftSet = new TreeSet<>(
+            Comparator.<Holder>comparingInt(h -> h.value)
+                    .reversed()
+                    .thenComparing(h -> h.idx)
+    );
+    private final TreeSet<Holder> rightSet = new TreeSet<>(
+            Comparator.<Holder>comparingInt(h -> h.value)
+                    .thenComparing(h -> h.idx)
+    );
 
-    public static double[] medianSlidingWindow(int[] nums, int k) {
+    public double[] medianSlidingWindow(int[] nums, int k) {
 
         double[] result = new double[nums.length - k + 1];
 
@@ -30,81 +34,58 @@ public class SlidingWindowMedian {
 
         int windowEnd = k, j = 1;
         for (; windowEnd < nums.length; windowEnd++) {
-            removeOutOfWindowElem(new Holder(nums[windowEnd - k], windowEnd - k));
             pushMedian(new Holder(nums[windowEnd], windowEnd));
+            removeOutOfWindowElem(new Holder(nums[windowEnd - k], windowEnd - k));
             result[j++] = peekMedian(k);
         }
         return result;
     }
 
-    private static void removeOutOfWindowElem(Holder e) {
-        boolean removed = false;
-
-        while (!qDesc.isEmpty() && qDesc.peek().idx <= e.idx) {
-
-            if (qDesc.peek().idx != e.idx) countOutElemsQDesc--;
-            else removed = true;
-
-            qDesc.poll();
-        }
-        while (!qAsc.isEmpty() && qAsc.peek().idx <= e.idx) {
-
-            if (qAsc.peek().idx != e.idx) countOutElemsQAsc--;
-            else removed = true;
-
-            qAsc.poll();
-        }
-        rebalanceQ();
-
-        if (!removed) {
-            if (e.value < qDesc.peek().value) countOutElemsQDesc++;
-            else if (e.value > qAsc.peek().value) countOutElemsQAsc++;
-        }
+    private void removeOutOfWindowElem(Holder e) {
+        if (!leftSet.remove(e)) rightSet.remove(e);
+        rebalance();
     }
 
-    private static void pushMedian(Holder h) {
-        if (qDesc.isEmpty()) {
-            qDesc.add(h);
+    private void pushMedian(Holder h) {
+        if (leftSet.isEmpty()) {
+            leftSet.add(h);
             return;
         }
-        if (qAsc.isEmpty()) {
-            qAsc.add(h);
+        if (rightSet.isEmpty()) {
+            if (h.value > leftSet.first().value) {
+                rightSet.add(h);
+            } else {
+                rightSet.add(leftSet.pollFirst());
+                leftSet.add(h);
+            }
             return;
         }
-        if (h.value < qDesc.peek().value) {
-            qDesc.add(h);
-        } else if (h.value > qAsc.peek().value) {
-            qAsc.add(h);
+        if ((long) h.value < (long) leftSet.first().value) {
+            leftSet.add(h);
+        } else if ((long) h.value > (long) rightSet.first().value) {
+            rightSet.add(h);
         } else {
-            qDesc.add(h);
+            leftSet.add(h);
         }
-        rebalanceQ();
+        rebalance();
     }
 
-    private static void rebalanceQ() {
-        while (qDesc.size() > qAsc.size() + 1) {
-            qAsc.add(qDesc.poll());
+    private void rebalance() {
+        while (leftSet.size() > rightSet.size() + 1) {
+            rightSet.add(leftSet.pollFirst());
         }
-        while (qAsc.size() > qDesc.size()) {
-            qDesc.add(qAsc.poll());
+        while (rightSet.size() > leftSet.size()) {
+            leftSet.add(rightSet.pollFirst());
         }
     }
 
-    private static double peekMedian(int k) {
+    private double peekMedian(int k) {
         return k % 2 != 0 ?
-                countOutElemsQDesc > countOutElemsQAsc ?
-                        qAsc.peek().value :
-                        qDesc.peek().value : (qAsc.peek().value + qDesc.peek().value) / 2.0;
+                leftSet.first().value :
+                ((long) rightSet.first().value + (long) leftSet.first().value) / 2.0;
     }
 
-    private static class Holder {
-        int value;
-        int idx;
-
-        public Holder(int value, int idx) {
-            this.value = value;
-            this.idx = idx;
-        }
+    private record Holder(int value, int idx) {
     }
 
 }
