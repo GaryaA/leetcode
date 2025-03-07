@@ -1,6 +1,6 @@
 package utils;
 
-public class TreeNode {
+public class TreeNode implements TreeNodePrintable {
 
     public int val;
     public TreeNode left;
@@ -19,4 +19,18 @@ public class TreeNode {
         this.right = right;
     }
 
+    @Override
+    public int getVal() {
+        return val;
+    }
+
+    @Override
+    public TreeNodePrintable getLeft() {
+        return left;
+    }
+
+    @Override
+    public TreeNodePrintable getRight() {
+        return right;
+    }
 }

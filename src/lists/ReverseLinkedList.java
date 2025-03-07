@@ -20,6 +20,7 @@ public class ReverseLinkedList {
     public static ListNode reverseList(ListNode head) {
         if (head == null) return null;
         if (head.next == null) return head;
+
         ListNode pointer = new ListNode(head.val);
 
         while (head.next != null) {

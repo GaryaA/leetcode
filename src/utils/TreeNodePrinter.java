@@ -6,13 +6,13 @@ import java.util.List;
 
 public class TreeNodePrinter {
 
-    public static void print(TreeNode root) {
+    public static void print(TreeNodePrintable root) {
         int maxLevel = TreeNodePrinter.maxLevel(root);
 
         printNodeInternal(Collections.singletonList(root), 1, maxLevel);
     }
 
-    private static void printNodeInternal(List<TreeNode> nodes, int level, int maxLevel) {
+    private static void printNodeInternal(List<TreeNodePrintable> nodes, int level, int maxLevel) {
         if (nodes.isEmpty() || TreeNodePrinter.isAllElementsNull(nodes))
             return;
 
@@ -23,12 +23,12 @@ public class TreeNodePrinter {
 
         TreeNodePrinter.printWhitespaces(firstSpaces);
 
-        List<TreeNode> newNodes = new ArrayList<TreeNode>();
-        for (TreeNode node : nodes) {
+        List<TreeNodePrintable> newNodes = new ArrayList<TreeNodePrintable>();
+        for (TreeNodePrintable node : nodes) {
             if (node != null) {
-                System.out.print(node.val);
-                newNodes.add(node.left);
-                newNodes.add(node.right);
+                System.out.print(node.getVal());
+                newNodes.add(node.getLeft());
+                newNodes.add(node.getRight());
             } else {
                 newNodes.add(null);
                 newNodes.add(null);
@@ -47,14 +47,14 @@ public class TreeNodePrinter {
                     continue;
                 }
 
-                if (nodes.get(j).left != null)
+                if (nodes.get(j).getLeft() != null)
                     System.out.print("/");
                 else
                     TreeNodePrinter.printWhitespaces(1);
 
                 TreeNodePrinter.printWhitespaces(i + i - 1);
 
-                if (nodes.get(j).right != null)
+                if (nodes.get(j).getRight() != null)
                     System.out.print("\\");
                 else
                     TreeNodePrinter.printWhitespaces(1);
@@ -73,11 +73,11 @@ public class TreeNodePrinter {
             System.out.print(" ");
     }
 
-    private static <T extends Comparable<?>> int maxLevel(TreeNode node) {
+    private static <T extends Comparable<?>> int maxLevel(TreeNodePrintable node) {
         if (node == null)
             return 0;
 
-        return Math.max(TreeNodePrinter.maxLevel(node.left), TreeNodePrinter.maxLevel(node.right)) + 1;
+        return Math.max(TreeNodePrinter.maxLevel(node.getLeft()), TreeNodePrinter.maxLevel(node.getRight())) + 1;
     }
 
     private static <T> boolean isAllElementsNull(List<T> list) {
