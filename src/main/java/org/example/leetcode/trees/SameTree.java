@@ -1,8 +1,8 @@
 package org.example.leetcode.trees;
 
-import utils.TreeNode;
+import org.example.leetcode.utils.TreeNode;
 
-import static utils.TreeNodeUtils.print;
+import static org.example.leetcode.utils.TreeNodeUtils.print;
 
 public class SameTree {
 

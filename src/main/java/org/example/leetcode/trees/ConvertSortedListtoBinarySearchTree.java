@@ -1,8 +1,8 @@
 package org.example.leetcode.trees;
 
-import utils.ListNode;
-import utils.TreeNode;
-import utils.TreeNodeUtils;
+import org.example.leetcode.utils.ListNode;
+import org.example.leetcode.utils.TreeNode;
+import org.example.leetcode.utils.TreeNodeUtils;
 
 public class ConvertSortedListtoBinarySearchTree {
 

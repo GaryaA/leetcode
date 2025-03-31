@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
 
-import static utils.Utils.switchElems;
+import static org.example.leetcode.utils.Utils.switchElems;
 
 public class NextPermutation {
 

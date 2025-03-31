@@ -1,8 +1,8 @@
 package org.example.leetcode.trees;
 
-import utils.TreeNode;
-import utils.TreeNodeFactory;
-import utils.TreeNodeUtils;
+import org.example.leetcode.utils.TreeNode;
+import org.example.leetcode.utils.TreeNodeFactory;
+import org.example.leetcode.utils.TreeNodeUtils;
 
 public class FlattenBinaryTreetoLinkedList {
 

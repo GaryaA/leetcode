@@ -1,8 +1,8 @@
 package org.example.leetcode.twopointers
 
-import utils.ListNode
-import utils.ListNodeFactory
-import utils.ListNodeUtils
+import org.example.leetcode.utils.ListNode
+import org.example.leetcode.utils.ListNodeFactory
+import org.example.leetcode.utils.ListNodeUtils
 
 fun main() {
     val head = ListNodeFactory.create("0,1,2")

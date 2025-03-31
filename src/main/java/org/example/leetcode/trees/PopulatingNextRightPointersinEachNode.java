@@ -1,7 +1,7 @@
 package org.example.leetcode.trees;
 
-import utils.Node;
-import utils.TreeNodeUtils;
+import org.example.leetcode.utils.Node;
+import org.example.leetcode.utils.TreeNodeUtils;
 
 import java.util.ArrayList;
 import java.util.LinkedList;

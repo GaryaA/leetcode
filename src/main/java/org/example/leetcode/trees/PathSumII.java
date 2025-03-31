@@ -1,6 +1,6 @@
 package org.example.leetcode.trees;
 
-import utils.TreeNode;
+import org.example.leetcode.utils.TreeNode;
 
 import java.util.ArrayList;
 import java.util.List;

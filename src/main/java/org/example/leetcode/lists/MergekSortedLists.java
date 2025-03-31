@@ -1,7 +1,7 @@
 package org.example.leetcode.lists;
 
-import utils.ListNode;
-import utils.ListNodeUtils;
+import org.example.leetcode.utils.ListNode;
+import org.example.leetcode.utils.ListNodeUtils;
 
 public class MergekSortedLists {
 

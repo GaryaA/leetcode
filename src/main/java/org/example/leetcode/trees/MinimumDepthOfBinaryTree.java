@@ -1,8 +1,8 @@
 package org.example.leetcode.trees;
 
-import utils.Pair;
-import utils.TreeNode;
-import utils.TreeNodeFactory;
+import org.example.leetcode.utils.Pair;
+import org.example.leetcode.utils.TreeNode;
+import org.example.leetcode.utils.TreeNodeFactory;
 
 import java.util.LinkedList;
 import java.util.Queue;

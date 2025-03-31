@@ -1,6 +1,6 @@
 package org.example.leetcode.lists;
 
-import utils.ListNode;
+import org.example.leetcode.utils.ListNode;
 
 import java.util.Stack;
 
