@@ -2,7 +2,7 @@ package trees;
 
 import utils.TreeNode;
 import utils.TreeNodeFactory;
-import utils.TreeNodePrinter;
+import utils.TreeNodeUtils;
 
 import java.util.HashMap;
 
@@ -10,7 +10,7 @@ public class PathSumIII {
 
     public static void main(String[] args) {
         TreeNode root = TreeNodeFactory.create("10,5,-3,3,2,null,11,3,-2,null,1");
-        TreeNodePrinter.print(root);
+        TreeNodeUtils.print(root);
         System.out.println(new PathSumIII().pathSum(root, 8));
     }
 

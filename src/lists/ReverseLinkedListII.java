@@ -1,6 +1,7 @@
 package lists;
 
 import utils.ListNode;
+import utils.ListNodeUtils;
 
 public class ReverseLinkedListII {
 
@@ -12,9 +13,9 @@ public class ReverseLinkedListII {
             head.next.next = new ListNode(3);
             head.next.next.next = new ListNode(4);
             head.next.next.next.next = new ListNode(5);
-            ListNode.printList(head);
+            ListNodeUtils.print(head);
             int left = 2, right = 4;
-            ListNode.printList(new ReverseLinkedListII().reverseBetween(head, left, right));
+            ListNodeUtils.print(new ReverseLinkedListII().reverseBetween(head, left, right));
         }
 
     }

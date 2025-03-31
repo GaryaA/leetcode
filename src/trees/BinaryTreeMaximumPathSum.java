@@ -1,7 +1,7 @@
 package trees;
 
 import utils.TreeNode;
-import utils.TreeNodePrinter;
+import utils.TreeNodeUtils;
 
 public class BinaryTreeMaximumPathSum {
 
@@ -32,7 +32,7 @@ public class BinaryTreeMaximumPathSum {
             root.left.right = new TreeNode(3);
             root.right.left = new TreeNode(-2);
             root.left.left.left = new TreeNode(-1);
-            TreeNodePrinter.print(root);
+            TreeNodeUtils.print(root);
             System.out.println(new BinaryTreeMaximumPathSum().maxPathSum(root));
         }
     }

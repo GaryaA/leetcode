@@ -1,6 +1,7 @@
 package lists;
 
 import utils.ListNode;
+import utils.ListNodeUtils;
 
 public class RemoveDuplicatesfromSortedListII {
 
@@ -11,8 +12,8 @@ public class RemoveDuplicatesfromSortedListII {
             head.next.next = new ListNode(1);
             head.next.next.next = new ListNode(2);
             head.next.next.next.next = new ListNode(3);
-            ListNode.printList(head);
-            ListNode.printList(new RemoveDuplicatesfromSortedListII().deleteDuplicates(head));
+            ListNodeUtils.print(head);
+            ListNodeUtils.print(new RemoveDuplicatesfromSortedListII().deleteDuplicates(head));
         }
         {
             ListNode head = new ListNode(1);
@@ -22,13 +23,13 @@ public class RemoveDuplicatesfromSortedListII {
             head.next.next.next.next = new ListNode(4);
             head.next.next.next.next.next = new ListNode(4);
             head.next.next.next.next.next.next = new ListNode(5);
-            ListNode.printList(head);
-            ListNode.printList(new RemoveDuplicatesfromSortedListII().deleteDuplicates(head));
+            ListNodeUtils.print(head);
+            ListNodeUtils.print(new RemoveDuplicatesfromSortedListII().deleteDuplicates(head));
         }
         {
             ListNode head = new ListNode(1);
             head.next = new ListNode(1);
-            ListNode.printList(new RemoveDuplicatesfromSortedListII().deleteDuplicates(head));
+            ListNodeUtils.print(new RemoveDuplicatesfromSortedListII().deleteDuplicates(head));
         }
 
     }

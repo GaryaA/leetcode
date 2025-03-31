@@ -1,6 +1,7 @@
 package lists;
 
 import utils.ListNode;
+import utils.ListNodeUtils;
 
 public class MergekSortedLists {
 
@@ -18,7 +19,7 @@ public class MergekSortedLists {
 
         ListNode[] lists = {l1, l2, l3};
 
-        ListNode.printList(new MergekSortedLists().mergeKLists(lists));
+        ListNodeUtils.print(new MergekSortedLists().mergeKLists(lists));
     }
 
     public ListNode mergeKLists(ListNode[] lists) {

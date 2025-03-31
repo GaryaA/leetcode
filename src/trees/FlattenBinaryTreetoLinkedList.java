@@ -2,17 +2,15 @@ package trees;
 
 import utils.TreeNode;
 import utils.TreeNodeFactory;
-import utils.TreeNodePrinter;
-
-import java.util.List;
+import utils.TreeNodeUtils;
 
 public class FlattenBinaryTreetoLinkedList {
 
     public static void main(String[] args) {
         TreeNode root = TreeNodeFactory.create("1,2,5,3,4,null,6");
-        TreeNodePrinter.print(root);
+        TreeNodeUtils.print(root);
         new FlattenBinaryTreetoLinkedList().flatten(root);
-        TreeNodePrinter.print(root);
+        TreeNodeUtils.print(root);
     }
 
     //    public void flatten(TreeNode root) {

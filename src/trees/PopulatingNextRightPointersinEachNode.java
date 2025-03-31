@@ -1,7 +1,7 @@
 package trees;
 
 import utils.Node;
-import utils.TreeNodePrinter;
+import utils.TreeNodeUtils;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -31,7 +31,7 @@ public class PopulatingNextRightPointersinEachNode {
         root.right.right.left = new Node(14);
         root.right.right.right = new Node(15);
 
-        TreeNodePrinter.print(new PopulatingNextRightPointersinEachNode().connect(root));
+        TreeNodeUtils.print(new PopulatingNextRightPointersinEachNode().connect(root));
     }
 
     public Node connect(Node root) {

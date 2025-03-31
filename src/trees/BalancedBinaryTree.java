@@ -2,7 +2,7 @@ package trees;
 
 import utils.TreeNode;
 
-import static utils.TreeNodePrinter.print;
+import static utils.TreeNodeUtils.print;
 
 public class BalancedBinaryTree {
 

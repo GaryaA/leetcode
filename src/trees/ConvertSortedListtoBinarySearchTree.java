@@ -2,7 +2,7 @@ package trees;
 
 import utils.ListNode;
 import utils.TreeNode;
-import utils.TreeNodePrinter;
+import utils.TreeNodeUtils;
 
 public class ConvertSortedListtoBinarySearchTree {
 
@@ -13,7 +13,7 @@ public class ConvertSortedListtoBinarySearchTree {
         head.next.next.next = new ListNode(5);
         head.next.next.next.next = new ListNode(9);
 
-        TreeNodePrinter.print(new ConvertSortedListtoBinarySearchTree().sortedListToBST(head));
+        TreeNodeUtils.print(new ConvertSortedListtoBinarySearchTree().sortedListToBST(head));
 
     }
 
