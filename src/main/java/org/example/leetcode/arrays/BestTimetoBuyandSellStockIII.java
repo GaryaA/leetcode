@@ -2,7 +2,7 @@ package org.example.leetcode.arrays;
 
 public class BestTimetoBuyandSellStockIII {
     public static void main(String[] args) {
-        int[] prices = {7, 1, 5, 3, 6, 4};
+        int[] prices = {3, 3, 5, 0, 0, 3, 1, 4};
         System.out.println(new BestTimetoBuyandSellStockIII().maxProfit(prices));
     }
 
