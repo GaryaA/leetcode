@@ -1,6 +1,6 @@
 package org.example.leetcode.utils;
 
-public class TreeNode implements TreeNodePrintable {
+public class TreeNode implements TreeNodePrintable, Cloneable {
 
     public int val;
     public TreeNode left;
@@ -25,12 +25,18 @@ public class TreeNode implements TreeNodePrintable {
     }
 
     @Override
-    public TreeNodePrintable getLeft() {
+    public TreeNode getLeft() {
         return left;
     }
 
     @Override
-    public TreeNodePrintable getRight() {
+    public TreeNode getRight() {
         return right;
     }
+
+//    @Override
+//    public String toString() {
+//        return TreeNodeUtils.toString(this);
+//    }
+
 }

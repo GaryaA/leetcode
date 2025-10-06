@@ -25,4 +25,24 @@ public class ListNodeUtils {
         if (head1.val != head2.val) return false;
         return deepEquals(head1.next, head2.next);
     }
+
+    public static ListNode reverseList(ListNode node) {
+        if (node == null || node.next == null) return node;
+
+        ListNode prevPrev = node;
+        ListNode prev = node.next;
+        ListNode curr = node.next.next;
+
+        prevPrev.next = null;
+
+        return reverseListNodes(prevPrev, prev, curr);
+    }
+
+    private static ListNode reverseListNodes(ListNode prevPrev, ListNode prev, ListNode curr) {
+        prev.next = prevPrev;
+        if (curr == null) {
+            return prev;
+        }
+        return reverseListNodes(prev, curr, curr.next);
+    }
 }
